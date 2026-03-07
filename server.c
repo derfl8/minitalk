@@ -6,7 +6,7 @@
 /*   By: abegou <abegou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:24:40 by abegou            #+#    #+#             */
-/*   Updated: 2026/03/06 18:18:39 by abegou           ###   ########.fr       */
+/*   Updated: 2026/03/07 15:12:13 by abegou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 
 static void	handler(int sig)
 {
-	unsigned char	c;
-	unsigned int	oct;
+	static unsigned char	c = 0;
+	static unsigned int		oct = 0;
 
-	c = 0;
-	oct = 0;
 	if (sig == SIGUSR2)
 		c |= (1 << (7 - oct));
-//	else if (sig == SIGUSR2)
-//		c |= (0 << (7 - oct));
+	else
+		c |= (0 << (7 - oct));
 	oct++;
 	if (oct == 8)
 	{
@@ -43,7 +41,7 @@ int	main(void)
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	sa.sa_flags = SA_SIGINFO;
-	ft_printf("%d", getpid());
-	while(1)
+	ft_printf("%d\n", getpid());
+	while (1)
 		pause();
 }
