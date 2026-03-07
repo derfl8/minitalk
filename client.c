@@ -6,7 +6,7 @@
 /*   By: abegou <abegou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:24:32 by abegou            #+#    #+#             */
-/*   Updated: 2026/03/07 15:26:50 by abegou           ###   ########.fr       */
+/*   Updated: 2026/03/07 17:54:16 by abegou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	main(int ac, char **av)
 	if (ac != 3)
 		return (1);
 	else if (ft_atoi(av[1]) < 999999)
+	{
 		ft_printf("%s", "Wrong PID dumbass");
+		return (1);
+	}
 	while (av[2][i])
 		send(ft_atoi(av[1]), av[2][i++]);
 	send(ft_atoi(av[1]), '\0');
