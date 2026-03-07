@@ -6,7 +6,7 @@
 /*   By: abegou <abegou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:24:32 by abegou            #+#    #+#             */
-/*   Updated: 2026/03/07 15:11:59 by abegou           ###   ########.fr       */
+/*   Updated: 2026/03/07 15:26:50 by abegou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	send(unsigned int pid, char c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(10);
+		usleep(100);
 		oct--;
 	}
 }
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 	i = 0;
 	if (ac != 3)
 		return (1);
-	else if (ft_atoi(av[1]) < 1)
+	else if (ft_atoi(av[1]) < 999999)
 		ft_printf("%s", "Wrong PID dumbass");
 	while (av[2][i])
 		send(ft_atoi(av[1]), av[2][i++]);
