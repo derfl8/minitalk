@@ -6,13 +6,13 @@
 /*   By: abegou <abegou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:24:40 by abegou            #+#    #+#             */
-/*   Updated: 2026/03/09 10:21:12 by abegou           ###   ########.fr       */
+/*   Updated: 2026/03/09 11:22:10 by abegou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void stack_str(char **str, unsigned char c)
+static void	stack_str(char **str, unsigned char c)
 {
 	char	buffer[2];
 	char	*join;
@@ -25,6 +25,7 @@ static void stack_str(char **str, unsigned char c)
 	free(*str);
 	*str = join;
 }
+
 static void	handler(int sig)
 {
 	static unsigned char	c = 0;
@@ -38,8 +39,7 @@ static void	handler(int sig)
 	{
 		if (c == '\0')
 		{
-			
-			ft_printf("%s", str);
+			ft_printf("%s\n", str);
 			free(str);
 			str = NULL;
 		}

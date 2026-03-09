@@ -6,7 +6,7 @@
 /*   By: abegou <abegou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:24:32 by abegou            #+#    #+#             */
-/*   Updated: 2026/03/09 10:09:10 by abegou           ###   ########.fr       */
+/*   Updated: 2026/03/09 11:20:26 by abegou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	send(unsigned int pid, char c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-//		usleep(100);
+		usleep(100);
 		oct--;
 	}
 }
@@ -34,14 +34,18 @@ int	main(int ac, char **av)
 
 	i = 0;
 	if (ac != 3)
-		return (1);
+	{
+		ft_printf("./client <PID> <message>\n");
+		return (0);
+	}
 	else if (ft_atoi(av[1]) < 999999)
 	{
-		ft_printf("%s", "Wrong PID dumbass");
+		ft_printf("Wrong PID\n");
 		return (1);
 	}
 	while (av[2][i])
 		send(ft_atoi(av[1]), av[2][i++]);
 	send(ft_atoi(av[1]), '\0');
+	ft_printf("Message received by server");
 	return (0);
 }
