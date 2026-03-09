@@ -6,19 +6,30 @@
 /*   By: abegou <abegou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:24:40 by abegou            #+#    #+#             */
-/*   Updated: 2026/03/09 09:44:56 by abegou           ###   ########.fr       */
+/*   Updated: 2026/03/09 10:21:12 by abegou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+static void stack_str(char **str, unsigned char c)
+{
+	char	buffer[2];
+	char	*join;
+
+	if (*str == NULL)
+		*str = ft_strdup("");
+	buffer[0] = c;
+	buffer[1] = '\0';
+	join = ft_strjoin(*str, buffer);
+	free(*str);
+	*str = join;
+}
 static void	handler(int sig)
 {
 	static unsigned char	c = 0;
 	static unsigned int		oct = 0;
 	static char				*str = NULL;
-	char					buffer[2];
-	char					*join;
 
 	if (sig == SIGUSR2)
 		c |= (1 << (7 - oct));
@@ -27,20 +38,13 @@ static void	handler(int sig)
 	{
 		if (c == '\0')
 		{
+			
 			ft_printf("%s", str);
 			free(str);
 			str = NULL;
 		}
 		else
-		{
-			if (str == NULL)
-				str = ft_strdup("");
-			buffer[0] = c;
-			buffer[1] = '\0';
-			join = ft_strjoin(str, buffer);
-			free(str);
-			str = join;
-		}
+			stack_str(&str, c);
 		oct = 0;
 		c = 0;
 	}

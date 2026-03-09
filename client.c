@@ -6,7 +6,7 @@
 /*   By: abegou <abegou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:24:32 by abegou            #+#    #+#             */
-/*   Updated: 2026/03/07 17:54:16 by abegou           ###   ########.fr       */
+/*   Updated: 2026/03/09 10:09:10 by abegou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	send(unsigned int pid, char c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(100);
+//		usleep(100);
 		oct--;
 	}
 }
