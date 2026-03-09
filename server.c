@@ -6,7 +6,7 @@
 /*   By: abegou <abegou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:24:40 by abegou            #+#    #+#             */
-/*   Updated: 2026/03/07 18:36:00 by abegou           ###   ########.fr       */
+/*   Updated: 2026/03/09 09:44:56 by abegou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static void	handler(int sig)
 			free(str);
 			str = join;
 		}
+		oct = 0;
+		c = 0;
 	}
-	oct = 0;
-	c = 0;
 }
 
 int	main(void)
